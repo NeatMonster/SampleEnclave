@@ -1,0 +1,21 @@
+enclave {
+    trusted {
+        public sgx_status_t new_vault([in,string] char *passphrase);
+
+        public sgx_status_t vault_size([out] uint32_t *vault_size);
+
+        public sgx_status_t load_vault([in,size=vault_size] uint8_t *vault, uint32_t vault_size, [in,string] char *passphrase);
+
+        public sgx_status_t save_vault([out,size=vault_size] uint8_t *vault, uint32_t vault_size);
+
+        public sgx_status_t has_account([in,string] char *name);
+
+        public sgx_status_t create_account([in,string] char *name, [in,string] char *user, [in,string] char *pass);
+
+        public sgx_status_t remove_account([in,string] char *name);
+
+        public sgx_status_t get_username([in,string] char *name, [out,size=size] char *user, uint32_t size);
+
+        public sgx_status_t get_password([in,string] char* name, [out,size=size] char *pass, uint32_t size);
+    };
+};
